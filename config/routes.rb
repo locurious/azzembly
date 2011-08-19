@@ -1,7 +1,7 @@
 Azzembly::Application.routes.draw do
-  devise_for :businesses
+  devise_for :users, :controllers => { :sessions => "users/sessions", :registrations => "users/registrations" }
 
-  devise_for :schools
+  get "azzembly/portal"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
@@ -53,7 +53,7 @@ Azzembly::Application.routes.draw do
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
   # root :to => "welcome#index"
-  root :to => "admin/dashboard#show"
+  root :to => "azzembly#portal"
   # See how all your routes lay out with "rake routes"
 
   # This is a legacy wild controller route that's not recommended for RESTful applications.
