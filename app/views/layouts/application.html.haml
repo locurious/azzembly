@@ -17,7 +17,7 @@
         - else 
           = link_to "Sign up", new_user_registration_path  
           or 
-          = link_to "sign in", new_user_session_path 
+          = link_to "sign in", new_user_session_path(:user_type => params[:user_type]) 
           %br
           %br
       - flash.each do |name, message|
