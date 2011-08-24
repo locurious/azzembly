@@ -38,6 +38,7 @@ GEM
     diff-lcs (1.1.2)
     erubis (2.6.6)
       abstract (>= 1.0.0)
+    haml (3.1.2)
     i18n (0.5.0)
     machinist (1.0.6)
     mail (2.2.19)
@@ -96,6 +97,7 @@ PLATFORMS
 
 DEPENDENCIES
   devise
+  haml
   machinist
   mysql2 (= 0.2.7)
   rails (= 3.0.9)

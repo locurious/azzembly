@@ -7,7 +7,7 @@ gem 'rails', '3.0.9'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem 'devise'
-
+gem 'haml'
 # Use unicorn as the web server
 # gem 'unicorn'
 
