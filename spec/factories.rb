@@ -6,3 +6,8 @@ Factory.define :user do |u|
   u.password 'please'
 end
 
+Factory.define :admin do |u|
+  u.name 'Test Admin'
+  u.email 'admin@test.com'
+  u.password 'password'
+end
