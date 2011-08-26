@@ -1,0 +1,9 @@
+%h3 Home
+
+%div
+  %p
+    = link_to "Business", new_user_registration_path(:user_type => "business")
+  %p
+    = link_to "School", new_user_registration_path(:user_type => "school")
+  %p
+    = link_to "Consumer", new_user_registration_path(:user_type => "consumer")
