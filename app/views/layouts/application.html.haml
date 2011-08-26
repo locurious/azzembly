@@ -1,25 +1,21 @@
-%html
+- html_tag class: 'no-js' do
   %head
-    %title
-      = yield(:title) || "Azzembly" 
-    = stylesheet_link_tag :all
-    = javascript_include_tag :defaults 
-    = csrf_meta_tag 
-    = yield(:head) 
-  %body
-    .container
-      .user_nav
-        -if user_signed_in? 
-          Signed in as: = current_user.email 
-          Not you?
-          = link_to "Sign out", destroy_user_session_path, :method => :delete 
-          %br      
-        - else 
-          = link_to "Sign up", new_user_registration_path  
-          or 
-          = link_to "sign in", new_user_session_path(:user_type => params[:user_type]) 
-          %br
-          %br
-      - flash.each do |name, message|
-        = content_tag :div, message, :id => "flash_#{name}"
-      = yield 
+    %title azzembly31
+    %meta{:charset => "utf-8"}
+    %meta{"http-equiv" => "X-UA-Compatible", :content => "IE=edge,chrome=1"}
+    %meta{:name => "viewport", :content => "width=device-width, initial-scale=1, maximum-scale=1"}
+    = stylesheet_link_tag :application
+    = javascript_include_tag :application
+    = csrf_meta_tags
+    %body{:class => params[:controller]}
+      #container.container
+        %header
+          %nav
+            %ul
+              = render 'devise/menu/registration_items"
+              = render 'devise/menu/login_items'
+          - flash.each do |name, msg|
+            = content_tag :div, msg, :id => "flash_#{name}" if msg.is_a?(String)
+        #main{:role => "main"}
+          = yield
+        %footer
