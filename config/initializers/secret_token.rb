@@ -4,4 +4,4 @@
 # If you change this key, all old signed cookies will become invalid!
 # Make sure the secret is at least 30 characters and all random,
 # no regular words or you'll be exposed to dictionary attacks.
-Azzembly::Application.config.secret_token = '1dd1471bf0fcf55fc473b755b0aae9a3febf166b488582fabfe6746e8bd3e3bd7816adfe31a7d2359c03cf700bff784c8ffc236010fbd50bd405d594f4852beb'
+Azzembly31::Application.config.secret_token = 'df8e85e3373a6eba26ff3629fbdc5b200a4562ba0d92806a847d594b40ac052896c0816a0cec65b30c5248d25a0a764c341a2db586ad87121407840c554027ed'
