@@ -1,13 +1,13 @@
 
 source 'http://rubygems.org'
 
-gem 'rails', '3.0.9'
+gem 'rails', '>=3.1.0.rc6'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem 'devise'
-
+gem 'haml'
 # Use unicorn as the web server
 # gem 'unicorn'
 
@@ -33,7 +33,7 @@ gem 'devise'
 
 group :test, :development do
   gem 'rspec-rails', '~> 2.6'
-  gem 'mysql2', '0.2.7'
+  gem 'mysql2'
 end
 
 group :test do

@@ -1,7 +1,7 @@
 class Users::RegistrationsController < Devise::RegistrationsController
   
   def new
-    @type = params[:user_type]
+    @type = params[:type]
     super
   end
   

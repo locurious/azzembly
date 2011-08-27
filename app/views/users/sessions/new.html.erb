@@ -11,7 +11,7 @@
   <% if devise_mapping.rememberable? -%>
     <p><%= f.check_box :remember_me %> <%= f.label :remember_me %></p>
   <% end -%>
-	<%= f.hidden_field :user_type, :value => @type  %>
+	<%= f.hidden_field :type, :value => @type  %>
 
   <p><%= f.submit "Sign in" %></p>
 <% end %>

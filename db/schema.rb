@@ -35,7 +35,7 @@ ActiveRecord::Schema.define(:version => 20110819000729) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
-    t.string   "user_type",              :limit => 32
+    t.string   "type",                   :limit => 32
     t.datetime "created_at"
     t.datetime "updated_at"
   end
