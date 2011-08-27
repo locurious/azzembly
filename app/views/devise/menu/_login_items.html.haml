@@ -3,4 +3,4 @@
     = link_to('Logout', destroy_user_session_path)
 - else
   %li
-    = link_to('Login', new_user_session_path(:type => @user_type || 'Business'))
+    = link_to('Login', new_user_session_path(:type => set_user_context))

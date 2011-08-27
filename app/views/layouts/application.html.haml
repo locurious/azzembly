@@ -12,8 +12,8 @@
       %header
         %nav
           %ul
-            = render 'devise/menu/registration_items', :locals => {:user_type => @user_type || 'Business'}
-            = render 'devise/menu/login_items', :locals => {:user_type => @user_type || 'Business'}
+            = render 'devise/menu/registration_items', :locals => {:user_type => set_user_context}
+            = render 'devise/menu/login_items', :locals => {:user_type => set_user_context}
         - flash.each do |name, msg|
           = content_tag :div, msg, :id => "flash_#{name}" if msg.is_a?(String)
       #main{:role => "main"}

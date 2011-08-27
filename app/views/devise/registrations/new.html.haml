@@ -19,6 +19,6 @@
     = f.label :password_confirmation
     %br/
     = f.password_field :password_confirmation
-    = f.hidden_field :type, :value => (@user_type || "Business")
+    = f.hidden_field :type, :value => set_user_context
   %p= f.submit "Sign up"
 = render :partial => "devise/shared/links"
