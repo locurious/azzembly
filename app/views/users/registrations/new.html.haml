@@ -20,11 +20,9 @@
   %p
     = f.label "I am a:"
     %br/
-		= f.label "Business"
-    = f.radio_button :type, :business_user :checked => false
-		%br/
-		= f.label "School"
-    = f.radio_button :type, :school_user :checked => false
+    -User::VALID_TYPES.each do |type|
+      = f.label type.constantize.slug
+      = f.radio_button :type, type, :checked => false
 
   %p= f.submit "Sign up"
 = render :partial => "devise/shared/links"

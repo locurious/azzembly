@@ -1,6 +1,13 @@
 class HomeController < ApplicationController
   def index
     @users = User.all
-    @user_type = params[:type]
+  end
+  
+  def school
+    @users = SchoolUser.all
+  end
+  
+  def business
+    @users = BusinessUser.all
   end
 end

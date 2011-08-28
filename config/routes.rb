@@ -4,8 +4,12 @@ Azzembly31::Application.routes.draw do
   #get \"users\/show\"
 
   root :to => "home#index"
+  match 'business' => 'home#business', :as => :business_user
+  match 'school' => 'home#school', :as => :school_user
 
-  devise_for :users
+  
+
+  devise_for :users, :controllers => { :sessions => "users/sessions", :registrations => "users/registrations" }
   resources :users, :only => :show
 
 
