@@ -1,0 +1,3 @@
+USER_TYPE_BUSINESS = 'Business'
+USER_TYPE_CONSUMER = 'Cons'
+USER_TYPE_SCHOOL = 'School'
