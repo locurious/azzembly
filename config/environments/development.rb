@@ -11,10 +11,7 @@ Azzembly31::Application.configure do
 
   # Show full error reports and disable caching
   config.consider_all_requests_local       = true
-<<<<<<< HEAD
-=======
 
->>>>>>> d49dedd4ca607a5ec1a2d79243cdb9f67ee394f9
   config.action_controller.perform_caching = false
 
   # ActionMailer Config

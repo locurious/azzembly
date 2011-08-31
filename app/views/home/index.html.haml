@@ -1,5 +1,4 @@
-%h3
-  = "#{set_user_context} Home"
+
 
 %div
   - @users.each_with_index do |user, i|
@@ -9,5 +8,4 @@
   %br
   = link_to "Login (School)", new_user_session_path(:type => "School") 
 %br
-%div
-  = link_to "Switch", @user_type == 'Business' ? '/?type=School' : '/?type=Business'
+

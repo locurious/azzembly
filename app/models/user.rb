@@ -19,9 +19,9 @@ class User < ActiveRecord::Base
     type = params.delete(:type)
     params = params.clone
     case type
-      when 'School'
+      when USER_TYPE_SCHOOL
         return SchoolUser.new(params)
-      when 'Business'
+      when USER_TYPE_BUSINESS
         return BusinessUser.new(params)
       else
         raise "Invalid type for user.build: #{type.to_s}"
@@ -36,10 +36,10 @@ end
 
 
 class SchoolUser < User
-  def self.slug; "School"; end
+  def self.slug; USER_TYPE_SCHOOL; end
 end
 
 class BusinessUser < User
-  def self.slug; "Business"; end
+  def self.slug; USER_TYPE_BUSINESS; end
   
 end
