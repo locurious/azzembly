@@ -1,4 +1,6 @@
 Azzembly31::Application.routes.draw do
+  resources :locations
+
   devise_for :admins
 
   #get \"users\/show\"

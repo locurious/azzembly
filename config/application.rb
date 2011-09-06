@@ -22,6 +22,9 @@ module Azzembly31
     config.generators do |g|
       g.view_specs false
       g.helper_specs false
+      g.test_framework  :rspec, :fixture_replacement => :factory_girl
+      
+      g.fallbacks[:rspec] = :test_unit
     end
 
     # Settings in config/environments/* take precedence over those specified here.
