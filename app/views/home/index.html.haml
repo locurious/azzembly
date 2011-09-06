@@ -3,9 +3,7 @@
 %div
   - @users.each_with_index do |user, i|
     = "#{i + 1}: #{user.name}"
-%div
-  = link_to "Login (Business)", new_user_session_path(:type => 'Business')
-  %br
-  = link_to "Login (School)", new_user_session_path(:type => "School") 
+    %br
+
 %br
 

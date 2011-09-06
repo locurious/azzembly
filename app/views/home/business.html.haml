@@ -3,5 +3,8 @@
 
 %div
   - @users.each do |user|
-    = user.name
+    = user.name 
+
+%div
+  = link_to("New Location", new_location_path(current_user.business))
 
