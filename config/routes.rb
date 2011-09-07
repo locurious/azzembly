@@ -1,4 +1,6 @@
 Azzembly31::Application.routes.draw do
+  resources :businesses
+
   resources :locations
 
   devise_for :admins
@@ -14,6 +16,7 @@ Azzembly31::Application.routes.draw do
   devise_for :users, :controllers => { :sessions => "users/sessions", :registrations => "users/registrations" }
   resources :users, :only => :show
   resources :locations
+  resources :business
 
 
   # The priority is based upon order of creation:
