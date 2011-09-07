@@ -8,5 +8,10 @@
  Phillip:
 	 1. re-instate selective landing pages for registration creation
 	 2. re-instate selective landing pages for session creation
-	 
+09/02/2011
+   1. business scaffolding
+   2. locations scaffolding
+   -------------------------
+   3. tests for basic crud
+	 4. custom routes for business
 
