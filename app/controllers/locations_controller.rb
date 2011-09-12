@@ -1,8 +1,9 @@
 class LocationsController < ApplicationController
+  before_filter :fetch_organization
   # GET /locations
   # GET /locations.json
   def index
-    @locations = Location.all
+    @locations = @business.locations.all
 
     respond_to do |format|
       format.html # index.html.erb
@@ -24,7 +25,7 @@ class LocationsController < ApplicationController
   # GET /locations/new
   # GET /locations/new.json
   def new
-    @location = Location.new
+    @location = @business.locations.build
 
     respond_to do |format|
       format.html # new.html.erb
@@ -40,11 +41,11 @@ class LocationsController < ApplicationController
   # POST /locations
   # POST /locations.json
   def create
-    @location = Location.new(params[:location])
+    @location = @business.locations.build(params[:location])
 
     respond_to do |format|
       if @location.save
-        format.html { redirect_to @location, notice: 'Location was successfully created.' }
+        format.html { redirect_to [@business, @location], notice: 'Location was successfully created.' }
         format.json { render json: @location, status: :created, location: @location }
       else
         format.html { render action: "new" }
@@ -60,7 +61,7 @@ class LocationsController < ApplicationController
 
     respond_to do |format|
       if @location.update_attributes(params[:location])
-        format.html { redirect_to @location, notice: 'Location was successfully updated.' }
+        format.html { redirect_to [@business, @location], notice: 'Location was successfully updated.' }
         format.json { head :ok }
       else
         format.html { render action: "edit" }
@@ -80,4 +81,15 @@ class LocationsController < ApplicationController
       format.json { head :ok }
     end
   end
+  
+  private
+  
+    def fetch_organization
+      #raise params.inspect
+      @business = Business.find(params[:business_id])
+      #@school   = School.find(params[:school_id])
+      params.merge!({:organization_id => params.delete(:business_id)})
+    end
 end
+
+

@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
   
-  belongs_to :business
+  belongs_to :business, :foreign_key => 'organization_id'
   
   validates_presence_of :type, :on => :create, :message => "can't be blank"
   # Include default devise modules. Others available are:
@@ -32,6 +32,11 @@ class User < ActiveRecord::Base
   
   def user_type
     self.class.name
+  end
+  
+  def associate_organization!(organization)
+    self.organization_id = organization.id
+    self.save
   end
   
 end

@@ -10,6 +10,7 @@ class CreateLocations < ActiveRecord::Migration
       t.string :fax
       t.float :lat
       t.float :lng
+      t.integer :organization_id
 
       t.timestamps
     end

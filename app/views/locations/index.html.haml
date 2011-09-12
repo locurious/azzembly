@@ -26,10 +26,10 @@
       %td= location.fax
       %td= location.lat
       %td= location.lng
-      %td= link_to 'Show', location
-      %td= link_to 'Edit', edit_location_path(location)
-      %td= link_to 'Destroy', location, :confirm => 'Are you sure?', :method => :delete
+      %td= link_to 'Show', [@business, location]
+      %td= link_to 'Edit', edit_business_location_path(@business, location)
+      %td= link_to 'Destroy', [@business, location], :confirm => 'Are you sure?', :method => :delete
 
 %br
 
-= link_to 'New Location', new_location_path
+= link_to 'New Location', new_business_location_path(@business)

@@ -1,10 +1,14 @@
 %h3
-  = "#{set_user_context} Home"
+  = current_user.business ? "(#{current_user.business.name})" : "Welcome Business User"
 
 %div
   - @users.each do |user|
     = user.name 
 
 %div
-  = link_to("New Location", new_location_path(current_user.business))
+  = link_to("New Location", new_business_location_path(current_user.business)) if business_exists?
+
+%div
+  = business_exists? ? link_to("Edit Business", edit_business_path(current_user.business)) : link_to("Create Business", new_business_path) 
+
 

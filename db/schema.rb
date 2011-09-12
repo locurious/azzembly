@@ -47,6 +47,7 @@ ActiveRecord::Schema.define(:version => 20110906050919) do
     t.string   "fax"
     t.float    "lat"
     t.float    "lng"
+    t.integer  "organization_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
