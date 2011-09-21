@@ -5,6 +5,20 @@ class LocationsController < ApplicationController
   def index
     @locations = @business.locations.all
 
+    @map = Cartographer::Gmap.new( 'map' )
+    @map.zoom = :bound
+    @map.icons << Cartographer::Gicon.new
+  
+    @business.locations.each do |location|
+      @map.markers << 
+        Cartographer::Gmarker.new(
+          :name => @business.name,
+          :marker_type => "Building",
+          :position => [location.lat, location.lng],
+          :info_window_url => "fixme.org"
+        )
+    end
+
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @locations }

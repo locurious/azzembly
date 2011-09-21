@@ -1,6 +1,5 @@
 Azzembly31::Application.routes.draw do
   resources :businesses
-
   resources :locations
 
   devise_for :admins
@@ -9,9 +8,7 @@ Azzembly31::Application.routes.draw do
 
   root :to => "home#index"
   match 'business' => 'home#business', :as => :business_user
-  match 'school' => 'home#school', :as => :school_user
-
-  
+  match 'school'   => 'home#school',   :as => :school_user
 
   devise_for :users, :controllers => { :sessions => "users/sessions", :registrations => "users/registrations" }
   resources :users, :only => :show
@@ -19,7 +16,6 @@ Azzembly31::Application.routes.draw do
   resources :businesses do
     resources :locations
   end
-
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

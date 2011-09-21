@@ -1,5 +1,8 @@
 %h1 Listing locations
 
+= raw @map.to_html
+%div{:id=>@map.dom_id} [This should become a map]
+
 %table
   %tr
     %th Name
