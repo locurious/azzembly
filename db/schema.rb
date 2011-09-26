@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110906050919) do
+ActiveRecord::Schema.define(:version => 20110926060556) do
 
   create_table "admins", :force => true do |t|
     t.string   "email",                                 :default => "", :null => false
@@ -37,6 +37,26 @@ ActiveRecord::Schema.define(:version => 20110906050919) do
     t.datetime "updated_at"
   end
 
+  create_table "deal_school_eligibility", :id => false, :force => true do |t|
+    t.integer "school_id"
+    t.integer "deal_id"
+  end
+
+  add_index "deal_school_eligibility", ["deal_id", "school_id"], :name => "index_deal_school_eligibility_on_deal_id_and_school_id"
+
+  create_table "deals", :force => true do |t|
+    t.string   "name"
+    t.text     "description"
+    t.string   "deal_type"
+    t.datetime "start_date"
+    t.datetime "end_date"
+    t.integer  "business_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "deals", ["business_id"], :name => "index_deals_on_business_id"
+
   create_table "locations", :force => true do |t|
     t.string   "name"
     t.string   "address"
@@ -48,6 +68,13 @@ ActiveRecord::Schema.define(:version => 20110906050919) do
     t.float    "lat"
     t.float    "lng"
     t.integer  "organization_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "organization_type"
+  end
+
+  create_table "schools", :force => true do |t|
+    t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

@@ -1,4 +1,7 @@
 Azzembly31::Application.routes.draw do
+
+  resources :schools
+
   resources :businesses
 
   resources :locations
@@ -17,9 +20,13 @@ Azzembly31::Application.routes.draw do
   resources :users, :only => :show
   
   resources :businesses do
+    resources :deals
     resources :locations
   end
 
+  resources :schools do
+    resources :deals
+  end
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
