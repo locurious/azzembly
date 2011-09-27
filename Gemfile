@@ -22,3 +22,4 @@ gem "launchy", ">= 2.0.5", :group => :test
 gem "devise", ">= 1.4.2"
 gem "frontend-helpers"
 gem "rails-footnotes", ">= 3.7", :group => :development
+gem "geocoder"
