@@ -12,7 +12,7 @@ class LocationsController < ApplicationController
     @business.locations.each do |location|
       @map.markers << 
         Cartographer::Gmarker.new(
-          :name => @business.name,
+          :name => 'location_'+Digest::MD5.hexdigest(location.name),
           :marker_type => "Building",
           :position => [location.lat, location.lng],
           :info_window_url => "fixme.org"
