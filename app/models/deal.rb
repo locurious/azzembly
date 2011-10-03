@@ -3,5 +3,5 @@ class Deal < ActiveRecord::Base
   validates_presence_of :name
 
   has_many :deal_school_eligibilities
-  has_many :eligible_schools, :through => :deal_school_eligibilities
+  has_many :eligible_schools, :through => :deal_school_eligibilities, :source => :school
 end

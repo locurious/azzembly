@@ -2,6 +2,6 @@
 
 = render 'form'
 
-= link_to 'Show', @deal
+= link_to 'Show', business_deal_path(@business, @deal)
 \|
-= link_to 'Back', deals_path
+= link_to 'Back', business_deals_path(@business)

@@ -11,13 +11,13 @@ class CreateDeals < ActiveRecord::Migration
       t.timestamps
     end
 
-    create_table :deal_school_eligibility, :id => false do |t|
+    create_table :deal_school_eligibilities, :id => false do |t|
       t.references :school
       t.references :deal
     end
 
     add_index :deals, :business_id
-    add_index :deal_school_eligibility, [:deal_id, :school_id]
+    add_index :deal_school_eligibilities, [:deal_id, :school_id]
 
   end
 end

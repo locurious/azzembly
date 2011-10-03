@@ -20,10 +20,10 @@
       %td= deal.start_date
       %td= deal.end_date
       %td= deal.business_id
-      %td= link_to 'Show', deal
-      %td= link_to 'Edit', edit_deal_path(deal)
-      %td= link_to 'Destroy', deal, :confirm => 'Are you sure?', :method => :delete
+      %td= link_to 'Show', polymorphic_path([@business, deal])
+      %td= link_to 'Edit', edit_business_deal_path(@business, deal)
+      %td= link_to 'Destroy', polymorphic_path([@business, deal]), :confirm => 'Are you sure?', :method => :delete
 
 %br
 
-= link_to 'New Deal', new_deal_path
+= link_to 'New Deal', new_business_deal_path(@business)

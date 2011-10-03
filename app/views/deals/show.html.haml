@@ -19,6 +19,6 @@
   %b Business:
   = @deal.business_id
 
-= link_to 'Edit', edit_deal_path(@deal)
+= link_to 'Edit', edit_business_deal_path(@business, @deal)
 \|
-= link_to 'Back', deals_path
+= link_to 'Back', business_deals_path(@business)

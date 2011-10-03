@@ -1,9 +1,15 @@
 class DealsController < ApplicationController
   before_filter :fetch_organization
-  # GET /deals
-  # GET /deals.json
+  # GET /business/1/deals
+  # GET /schools/1/deals.json
   def index
-    @deals = Deal.all
+    if @business
+      @deals = @business.deals 
+    elsif @school
+      @deals = @school.available_deals
+    else
+      @deals = Deal.all
+    end
 
     respond_to do |format|
       format.html # index.html.erb
@@ -45,7 +51,7 @@ class DealsController < ApplicationController
 
     respond_to do |format|
       if @deal.save
-        format.html { redirect_to @deal, notice: 'Deal was successfully created.' }
+        format.html { redirect_to [@business, @deal], notice: 'Deal was successfully created.' }
         format.json { render json: @deal, status: :created, location: @deal }
       else
         format.html { render action: "new" }
@@ -61,7 +67,7 @@ class DealsController < ApplicationController
 
     respond_to do |format|
       if @deal.update_attributes(params[:deal])
-        format.html { redirect_to @deal, notice: 'Deal was successfully updated.' }
+        format.html { redirect_to [@business, @deal], notice: 'Deal was successfully updated.' }
         format.json { head :ok }
       else
         format.html { render action: "edit" }
@@ -77,7 +83,7 @@ class DealsController < ApplicationController
     @deal.destroy
 
     respond_to do |format|
-      format.html { redirect_to deals_url }
+      format.html { redirect_to business_deals_url(@business) }
       format.json { head :ok }
     end
   end

@@ -1,9 +1,7 @@
 Azzembly31::Application.routes.draw do
 
-  resources :schools
-
-  resources :businesses
-  resources :locations
+  #resources :schools
+  #resources :locations
 
   devise_for :admins
 

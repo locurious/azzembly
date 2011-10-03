@@ -1,4 +1,4 @@
-= simple_form_for @deal do |f|
+= semantic_form_for [@business, @deal] do |f|
   -if @deal.errors.any?
     #error_explanation
       %h2= "#{pluralize(@deal.errors.count, "error")} prohibited this deal from being saved:"
@@ -6,9 +6,13 @@
         - @deal.errors.full_messages.each do |msg|
           %li= msg
 
+  = f.inputs do
     = f.input :name
     = f.input :description
     = f.input :deal_type
     = f.input :start_date
     = f.input :end_date
-    = f.association :schools
+    = f.input :eligible_schools, :as => :check_boxes, :collection => School.all, :label => "Eligible Schools"
+
+  = f.buttons do
+    = f.commit_button
