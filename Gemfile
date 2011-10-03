@@ -23,3 +23,5 @@ gem "devise", ">= 1.4.2"
 gem "frontend-helpers"
 gem "rails-footnotes", ">= 3.7", :group => :development
 gem "geocoder"
+gem "formtastic"
+gem "awesome_print", :group => :development
