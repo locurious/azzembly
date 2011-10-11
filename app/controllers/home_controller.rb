@@ -5,7 +5,6 @@ class HomeController < ApplicationController
   
   def school
     @user_type = USER_TYPE_SCHOOL
-require 'ruby-debug';debugger; puts ""
     @school = current_user.school
   end
   
