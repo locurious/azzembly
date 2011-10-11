@@ -1,0 +1,20 @@
+%h1 Available deals
+
+%table
+  %tr
+    %th Name
+    %th Description
+    %th Deal type
+    %th Start date
+    %th End date
+    %th Business
+
+  - @deals.each do |deal|
+    %tr
+      %td= deal.name
+      %td= deal.description
+      %td= deal.deal_type
+      %td= deal.start_date
+      %td= deal.end_date
+      %td= link_to deal.business.name, deal.business
+

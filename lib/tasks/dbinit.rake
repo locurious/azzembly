@@ -13,12 +13,21 @@ namespace :db do
     ].each { |k| k.destroy_all }
 
     ap User.create(
-      :email                 => "foo@bar.baz",
+      :email                 => "business@foo.bar",
       :password              => 'foobar',
       :password_confirmation => "foobar",
-      :type                  => 'BusinessUser'
+      :type                  => 'BusinessUser',
+      :name                  => 'Foo Business User'
       )
-    puts "Password is foobar"
+
+    ap User.create(
+      :email                 => "school@foo.bar",
+      :password              => 'foobar',
+      :password_confirmation => "foobar",
+      :type                  => 'SchoolUser',
+      :name                  => 'Foo School User'
+      )
+    puts "Password for both is 'foobar'"
 
     %w(Biscuit Hotdog Satellite).each do |noun|
       Business.create(
@@ -56,6 +65,41 @@ namespace :db do
     )
 
     b.save!
+
+    school_locations = [
+      {
+        :name        => "Del Mar Pines School",
+        :address     => "3975 Torrington Street",
+        :city        => "San Diego",
+        :region      => "CA",
+        :postal_code => "92130-1293",
+      },
+      {
+        :name        => "Sage Canyon Elementary School",
+        :address     => "5290 Harvest Run Drive",
+        :city        => "San Diego",
+        :region      => "CA",
+        :postal_code => "92130",
+      },
+      {
+        :name        => "Torrey Pines High School",
+        :address     => "3710 Del Mar Heights Road",
+        :city        => "San Diego",
+        :region      => "CA",
+        :postal_code => "92130",
+      },
+      {
+        :name        => "Carmel Del Mar School",
+        :address     => "12345 Carmel Park Drive",
+        :city        => "San Diego",
+        :region      => "CA",
+        :postal_code => "92130",
+      },
+    ]
+
+    School.all.each_with_index{|s, i|
+      s.locations.create( school_locations[i] )
+    }
 
   end
 end

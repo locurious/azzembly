@@ -3,13 +3,13 @@ class LocationsController < ApplicationController
   # GET /locations
   # GET /locations.json
   def index
-    @locations = @business.locations.all
+    @locations = @organization.locations.all
 
     @map = Cartographer::Gmap.new( 'map' )
     @map.zoom = :bound
     @map.icons << Cartographer::Gicon.new
   
-    @business.locations.each do |location|
+    @organization.locations.each do |location|
       @map.markers << 
         Cartographer::Gmarker.new(
           :name => 'location_'+Digest::MD5.hexdigest(location.name),
@@ -39,7 +39,7 @@ class LocationsController < ApplicationController
   # GET /locations/new
   # GET /locations/new.json
   def new
-    @location = @business.locations.build
+    @location = @organization.locations.build
 
     respond_to do |format|
       format.html # new.html.erb
@@ -55,11 +55,11 @@ class LocationsController < ApplicationController
   # POST /locations
   # POST /locations.json
   def create
-    @location = @business.locations.build(params[:location])
+    @location = @organization.locations.build(params[:location])
 
     respond_to do |format|
       if @location.save
-        format.html { redirect_to [@business, @location], notice: 'Location was successfully created.' }
+        format.html { redirect_to [@organization, @location], notice: 'Location was successfully created.' }
         format.json { render json: @location, status: :created, location: @location }
       else
         format.html { render action: "new" }
@@ -75,7 +75,7 @@ class LocationsController < ApplicationController
 
     respond_to do |format|
       if @location.update_attributes(params[:location])
-        format.html { redirect_to [@business, @location], notice: 'Location was successfully updated.' }
+        format.html { redirect_to [@organization, @location], notice: 'Location was successfully updated.' }
         format.json { head :ok }
       else
         format.html { render action: "edit" }
@@ -100,8 +100,9 @@ class LocationsController < ApplicationController
   
     def fetch_organization
       #raise params.inspect
-      @business = Business.find(params[:business_id])
-      #@school   = School.find(params[:school_id])
+      @business = Business.find_by_id(params[:business_id])
+      @school   = School.find_by_id(params[:school_id])
+      @organization = @business || @school
       params.merge!({:organization_id => params.delete(:business_id)})
     end
 end

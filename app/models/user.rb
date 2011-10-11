@@ -1,6 +1,14 @@
 class User < ActiveRecord::Base
   
-  belongs_to :business, :foreign_key => 'organization_id'
+  belongs_to :organization, :foreign_key => 'organization_id', :polymorphic => true
+
+  def business
+		self.organization
+	end
+  
+  def school
+		self.organization
+	end
   
   validates_presence_of :type, :on => :create, :message => "can't be blank"
   # Include default devise modules. Others available are:

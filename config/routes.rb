@@ -19,10 +19,12 @@ Azzembly31::Application.routes.draw do
     resources :locations
   end
 
-  resources :schools do
-    resources :deals
+  resources :schools do |k|
+    resources :locations
   end
 
+  match "schools/:school_id/deals", :controller => :deals, :action => 'eligible_deals', :as => :eligible_deals
+  
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

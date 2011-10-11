@@ -3,18 +3,26 @@ class DealsController < ApplicationController
   # GET /business/1/deals
   # GET /schools/1/deals.json
   def index
-    if @business
-      @deals = @business.deals 
-    elsif @school
-      @deals = @school.available_deals
-    else
-      @deals = Deal.all
-    end
+    @deals = @business.deals 
 
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @deals }
     end
+  end
+
+  def eligible_deals
+    distance    = params[:within]
+    only_active = params[:active]
+    #if distance
+    #  ref_point = @school.locations.first
+    #  #nearby = Location.near( ref_point, distance ) #businesses.near
+    #  require 'ruby-debug'; debugger; puts ""
+    #  
+    #  #@deals = @school.available_deals
+    #  #.locations.near( ref_point.lat, ref_point.lng, distance )
+    #end
+    @deals = @school.available_deals
   end
 
   # GET /deals/1
