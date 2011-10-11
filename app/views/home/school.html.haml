@@ -1,5 +1,4 @@
 %h3
   = "#{set_user_context} Home"
 %div
-  - @users.each do |user|
-    = user.name
+  = link_to "Deals for #{@school.name}", eligible_deals_path(@school)
