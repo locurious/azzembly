@@ -12,7 +12,7 @@ namespace :db do
      Location
     ].each { |k| k.destroy_all }
 
-    ap User.create(
+    business_user = User.create(
       :email                 => "business@foo.bar",
       :password              => 'foobar',
       :password_confirmation => "foobar",
@@ -20,14 +20,8 @@ namespace :db do
       :name                  => 'Foo Business User'
       )
 
-    ap User.create(
-      :email                 => "school@foo.bar",
-      :password              => 'foobar',
-      :password_confirmation => "foobar",
-      :type                  => 'SchoolUser',
-      :name                  => 'Foo School User'
-      )
-    puts "Password for both is 'foobar'"
+    puts "Password for all sample accounts is 'foobar'"
+    puts business_user.email
 
     %w(Biscuit Hotdog Satellite).each do |noun|
       Business.create(
@@ -45,9 +39,19 @@ namespace :db do
     )
 
 
-    %w(Zucchini Walrus Upside-Down Twisted).each do |school|
+    %w(Zucchini Walrus Upside-Down Twisted).each_with_index do |school,i|
       k = %w(Prep High Academy College)[rand(4)]
-      School.create( :name => "#{school} #{k}" )
+      school = School.create( :name => "#{school} #{k}" )
+      school_user = User.create(
+        :email                 => "school#{i}@foo.bar",
+        :password              => 'foobar',
+        :password_confirmation => 'foobar',
+        :type                  => 'SchoolUser',
+        :name                  => "Foo School User #{i}"
+        )
+      school_user.organization = school
+      school_user.save!
+      puts school_user.email
     end
 
     DealSchoolEligibility.create(
